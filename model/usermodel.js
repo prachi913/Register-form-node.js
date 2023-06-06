@@ -1,3 +1,4 @@
+const { text } = require("express");
 const mongoose = require("mongoose");
 
 
@@ -12,10 +13,10 @@ const usershema = mongoose.Schema({
   state: { type: String, required: true },
   city: { type: String, required: true },
 
-  gender: { type: String, enum: ["Male", "Female", "Other"], required: true },
-  dateOfBirth: { type: Date, required: true },
+  gender: { type: String, required: true },
+  dateOfBirth: { type: String, required: true },
   age: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
