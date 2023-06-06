@@ -29,7 +29,7 @@ userrouter.post("/register", async (req, res) => {
        
         firstname,
         lastname,
-        email: hash,
+        email,
         country,
         state,
         city,
