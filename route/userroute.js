@@ -14,16 +14,18 @@ userrouter.post("/register", async (req, res) => {
     firstname,
     lastname,
     email,
-    password,
+    
     country,
     state,
     city,
     gender,
+    password,
+  
     dateOfBirth,
   age,
   } = req.body;
   try {
-    bcrypt.hash(email, 5, async (err, hash) => {
+    bcrypt.hash(password, 5, async (err, hash) => {
       // Store hash in your passwordword DB.
       const userer = new usermodel({
        
@@ -34,6 +36,7 @@ userrouter.post("/register", async (req, res) => {
         state,
         city,
         gender,
+        password:hash,
         dateOfBirth,
         age
       });

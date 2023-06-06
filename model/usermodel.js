@@ -14,6 +14,7 @@ const usershema = mongoose.Schema({
   city: { type: String, required: true },
 
   gender: { type: String, required: true },
+  password: { type: String, required: true },
   dateOfBirth: { type: String, required: true },
   age: {
     type: String,
