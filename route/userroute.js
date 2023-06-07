@@ -16,42 +16,50 @@ userrouter.get("/", async(req, res) => {
 });
 
 userrouter.post("/register", async (req, res) => {
-  const {
-    firstname,
-    lastname,
-    email,
+  // const {
+  //   firstname,
+  //   lastname,
+  //   email,
     
-    country,
-    state,
-    city,
-    gender,
-    // password,
+  //   country,
+  //   state,
+  //   city,
+  //   gender,
+  //   // password,
   
-    dateOfBirth,
-  age,
-  } = req.body;
-  try {
-    bcrypt.hash(email, 5, async (err, hash) => {
-      // Store hash in your passwordword DB.
-      const userer = new usermodel({
+  //   dateOfBirth,
+  // age,
+  // } = req.body;
+  // try {
+  //   bcrypt.hash(email, 5, async (err, hash) => {
+  //     // Store hash in your passwordword DB.
+  //     const userer = new usermodel({
        
-        firstname,
-        lastname,
-        email:hash,
-        country,
-        state,
-        city,
-        gender,
+  //       firstname,
+  //       lastname,
+  //       email:hash,
+  //       country,
+  //       state,
+  //       city,
+  //       gender,
         
-        // password:hash,
-        dateOfBirth,
-        age
-      });
-      await userer.save();
-      res.send({ msg: "new user registered" });
-    });
+  //       // password:hash,
+  //       dateOfBirth,
+  //       age
+  //     });
+  //     await userer.save();
+  //     res.send({ msg: "new user registered" });
+  //   });
+  // } catch (error) {
+  //   res.send(error);
+  // }
+
+  try {
+    const post = new usermodel(req.body);
+    await post.save();
+    res.send(post);
   } catch (error) {
-    res.send(error);
+    res.send({ err: err.message });
   }
 });
 
