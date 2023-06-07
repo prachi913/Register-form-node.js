@@ -5,8 +5,14 @@ const { usermodel } = require("../model/usermodel");
 
 const userrouter = Router();
 
-userrouter.get("/", (req, res) => {
-  res.send("hi");
+userrouter.get("/", async(req, res) => {
+  try {
+    const post = await usermodel.find();
+
+    res.send(post);
+  } catch (error) {
+    res.send({ err: err.message });
+  }
 });
 
 userrouter.post("/register", async (req, res) => {
@@ -49,6 +55,7 @@ userrouter.post("/register", async (req, res) => {
   }
 });
 
+// userrouter.get("/")
 
 module.exports = {
   userrouter,
